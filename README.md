@@ -34,17 +34,17 @@ bower install
 
 ## Command line
 
-# To dev...
+To dev...
 
 ```
 gulp
 ``` 
 This command will start a server, load the page in Google Chrome and watch all files to reload the browser when saved.
 
-# To prepare files for production...<br />
+To prepare files for production...<br />
 
 ```
 gulp production
 ```
 
-This command will create a directory called <i>production</i> in the root of the project with the files and folders inside it.
+This command will create a directory called <i>production</i> in the root of the project with the files and folders inside.
