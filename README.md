@@ -1,6 +1,6 @@
-# One page website
+# One page website structure
 
-Project starter
+Initial structure to develop one page website
 
 ## What I using?
 
@@ -22,23 +22,29 @@ Project starter
 [gulp-insert-lines](https://www.npmjs.com/package/gulp-insert-lines)<br />
 [gulp-plumber](https://www.npmjs.com/package/gulp-plumber)<br />
 
-
 ## Installation
 
 ```
 npm install
 ```
 
+```
+bower install
+```
+
 ## Command line
 
-to dev...
+# To dev...
 
 ```
 gulp
 ``` 
+This command will start a server, load the page in Google Chrome and watch all files to reload the browser when saved.
 
-to prepare files for production...<br />
+# To prepare files for production...<br />
 
 ```
 gulp production
 ```
+
+This command will create a directory called <i>production</i> in the root of the project with the files and folders inside it.
