@@ -68,6 +68,11 @@ gulp.task('js', function() {
 		.pipe(gulp.dest('production/dist/js'))
 });
 
+gulp.task('assets', function() {
+	return gulp.src('assets')
+		.pipe(gulp.dest('production'))
+});
+
 gulp.task('html', function() {
 	return gulp.src('index.html')
 		.pipe(deleteLines({
@@ -91,4 +96,4 @@ gulp.task('html', function() {
 		.pipe(gulp.dest('production'))
 });
 
-gulp.task('production', ['css','js', 'html']);
+gulp.task('production', ['css','js', 'html', 'assets']);
