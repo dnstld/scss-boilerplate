@@ -16,10 +16,9 @@ var gulp             = require('gulp'),
 		main: 'dev/js/main.js'
 	};
 
-// gulp
 gulp.task('sass', function() {
 	gulp.src('dev/sass/main.sass')
-	    .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe(plumber())
 		.pipe(sass())
 		.pipe(sourcemaps.write())
@@ -41,8 +40,8 @@ gulp.task('browserSync', function() {
 
 gulp.task('default', ['browserSync', 'sass'], function() {
 	gulp.watch('dev/sass/*.+(scss|sass)', ['sass']);
-	gulp.watch('index.html', browserSync.reload);
-	gulp.watch('dev/js/**/*.js', browserSync.reload);
+	gulp.watch('*.html', browserSync.reload);
+	gulp.watch('dev/js/*.js', browserSync.reload);
 });
 
 // gulp production
@@ -52,7 +51,7 @@ gulp.task('css', function() {
 		.pipe(rename({
 			suffix: '.min'
 		}))
-		.pipe(gulp.dest('dist/css'))
+		.pipe(gulp.dest('production/dist/css'))
 });
 
 gulp.task('js', function() {
@@ -66,7 +65,7 @@ gulp.task('js', function() {
 		.pipe(minifyJS().on('error', function() {
 			console.log(err);
 		}))
-		.pipe(gulp.dest('dist/js'))
+		.pipe(gulp.dest('production/dist/js'))
 });
 
 gulp.task('html', function() {
@@ -89,10 +88,7 @@ gulp.task('html', function() {
 			'before': /<\/body>$/,
 			'lineBefore': '        <script src="dist/js/main.min.js"></script>'
 		}))
-		.pipe(rename({
-			suffix: '-production'
-		}))
-		.pipe(gulp.dest('./'))
+		.pipe(gulp.dest('production'))
 });
 
 gulp.task('production', ['css','js', 'html']);
