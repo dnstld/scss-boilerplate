@@ -17,7 +17,7 @@ var gulp             = require('gulp'),
 	};
 
 gulp.task('sass', function() {
-	gulp.src('dev/sass/main.sass')
+	gulp.src('dev/sass/main.scss')
 		.pipe(sourcemaps.init())
 		.pipe(plumber())
 		.pipe(sass())
