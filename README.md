@@ -1,6 +1,6 @@
-# One page website structure
+# HTML5 boilerplate
 
-Initial structure to develop one page website
+My personal HTML5 boilerplate with SASS
 
 ## What I using?
 
@@ -21,6 +21,7 @@ Initial structure to develop one page website
 [gulp-delete-lines](https://www.npmjs.com/package/gulp-delete-lines)<br />
 [gulp-insert-lines](https://www.npmjs.com/package/gulp-insert-lines)<br />
 [gulp-plumber](https://www.npmjs.com/package/gulp-plumber)<br />
+[gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)<br />
 
 ## Installation
 

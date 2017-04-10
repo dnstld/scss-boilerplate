@@ -10,9 +10,10 @@ var gulp             = require('gulp'),
 	deleteLines        = require('gulp-delete-lines'),
 	insertLines        = require('gulp-insert-lines'),
 	plumber            = require('gulp-plumber'),
+	autoprefixer       = require('gulp-autoprefixer'),
 
 	// js files
-	scripts            = {
+	scripts  = {
 		main: 'dev/js/main.js'
 	};
 
@@ -21,6 +22,7 @@ gulp.task('sass', function() {
 		.pipe(sourcemaps.init())
 		.pipe(plumber())
 		.pipe(sass())
+		.pipe(autoprefixer())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dev/css'))
 		.pipe(browserSync.reload({
