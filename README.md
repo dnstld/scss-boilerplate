@@ -22,6 +22,8 @@ My personal HTML5 boilerplate with SASS
 [gulp-insert-lines](https://www.npmjs.com/package/gulp-insert-lines)<br />
 [gulp-plumber](https://www.npmjs.com/package/gulp-plumber)<br />
 [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)<br />
+[gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)<br />
+[imagemin-pngquant](https://www.npmjs.com/package/imagemin-pngquant)<br />
 
 ## Installation
 

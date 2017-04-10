@@ -11,6 +11,8 @@ var gulp             = require('gulp'),
 	insertLines        = require('gulp-insert-lines'),
 	plumber            = require('gulp-plumber'),
 	autoprefixer       = require('gulp-autoprefixer'),
+	imagemin           = require('gulp-imagemin'),
+	imageminPngquant   = require('imagemin-pngquant'),
 
 	// js files
 	scripts  = {
@@ -46,14 +48,14 @@ gulp.task('default', ['browserSync', 'sass'], function() {
 	gulp.watch('dev/js/*.js', browserSync.reload);
 });
 
-// gulp production
+// gulp dist
 gulp.task('css', function() {
 	return gulp.src('dev/css/main.css')
 		.pipe(minifyCSS())
 		.pipe(rename({
 			suffix: '.min'
 		}))
-		.pipe(gulp.dest('production/dist/css'))
+		.pipe(gulp.dest('dist/css'))
 });
 
 gulp.task('js', function() {
@@ -67,11 +69,11 @@ gulp.task('js', function() {
 		.pipe(minifyJS().on('error', function() {
 			console.log(err);
 		}))
-		.pipe(gulp.dest('production/dist/js'))
+		.pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('html', function() {
-	return gulp.src('index.html')
+	return gulp.src('*.html')
 		.pipe(deleteLines({
 			'filters': [
 				/<link\s+rel=/i
@@ -79,7 +81,7 @@ gulp.task('html', function() {
 		}))
 		.pipe(insertLines({
 			'before': /<\/head>$/,
-			'lineBefore': '        <link rel="stylesheet" type="text/css" href="dist/css/main.min.css">',
+			'lineBefore': '        <link rel="stylesheet" type="text/css" href="css/main.min.css">',
 		}))
 		.pipe(deleteLines({
 			'filters': [
@@ -88,14 +90,32 @@ gulp.task('html', function() {
 		}))
 		.pipe(insertLines({
 			'before': /<\/body>$/,
-			'lineBefore': '        <script src="dist/js/main.min.js"></script>'
+			'lineBefore': '        <script src="js/main.min.js"></script>'
 		}))
-		.pipe(gulp.dest('production'))
+		.pipe(gulp.dest('dist'))
 });
 
 gulp.task('assets', function() {
 	return gulp.src('assets/**/*')
-		.pipe(gulp.dest('production/assets'))
+		.pipe(gulp.dest('dist/assets'))
 });
 
-gulp.task('production', ['css','js', 'html', 'assets']);
+gulp.task('public', function() {
+	return gulp.src('public/**/*')
+		.pipe(gulp.dest('dist/'))
+});
+
+gulp.task('images', function() {
+  return gulp.src('assets/images/**/*')
+    .pipe(imagemin({
+    	interlaced: true,
+			progressive: true,
+			optimizationLevel: 5,
+			svgoPlugins: [{removeViewBox: true}],
+			use: [imageminPngquant()]
+    }))
+    .pipe(plumber())
+    .pipe(gulp.dest('dist/assets/images'))
+});
+
+gulp.task('dist', ['css','js', 'html', 'assets', 'public', 'images']);
