@@ -1,12 +1,12 @@
 {
-  "name": "project-starter",
-  "description": "project starter with sass",
+  "name": "scss-boilerplate",
+  "description": "scss boilerplate",
   "main": "",
   "authors": [
     "denis toledo"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/dnstld/project-starter",
+  "homepage": "https://github.com/dnstld/scss-boilerplate",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -16,6 +16,6 @@
     "tests"
   ],
   "devDependencies": {
-    "reset-css": "^2.2.0"
+    "eric-mayer-reset-less-sass": "https://github.com/dnstld/eric-mayer-reset-less-sass.git"
   }
 }

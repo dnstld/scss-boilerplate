@@ -1,6 +1,6 @@
 {
-  "name": "project-starter",
-  "description": "project starter with sass",
+  "name": "scss-boilerplate",
+  "description": "https://github.com/dnstld/scss-boilerplate",
   "author": "denis toledo",
   "license": "ISC",
   "devDependencies": {

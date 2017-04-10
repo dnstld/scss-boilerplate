@@ -1,0 +1,51 @@
+@mixin breakpoint($size) {
+  @media (min-width: $size + em) {
+    @content;
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin  box-sizing($type: border-box) {
+	box-sizing: $type;
+}
+
+@mixin alignX {
+  position: relative;
+  top: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin alignY {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin alignXY {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}

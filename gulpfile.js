@@ -17,7 +17,7 @@ var gulp             = require('gulp'),
 	};
 
 gulp.task('sass', function() {
-	gulp.src('dev/sass/main.scss')
+	gulp.src('dev/scss/main.scss')
 		.pipe(sourcemaps.init())
 		.pipe(plumber())
 		.pipe(sass())
@@ -39,7 +39,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('default', ['browserSync', 'sass'], function() {
-	gulp.watch('dev/sass/*.+(scss|sass)', ['sass']);
+	gulp.watch('dev/scss/**/*.+(scss|sass)', ['sass']);
 	gulp.watch('*.html', browserSync.reload);
 	gulp.watch('dev/js/*.js', browserSync.reload);
 });

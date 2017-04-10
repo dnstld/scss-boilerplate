@@ -17,7 +17,7 @@ $icon-denis-toledo: "\e900";
   }
 }
 
-@mixin icon($content, $size: 1) {
+@mixin icon($content, $size: 16) {
   @include icon-content($content);
 
   &::before {
@@ -27,8 +27,9 @@ $icon-denis-toledo: "\e900";
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
-    line-height: 1;
-    font-size: $size + em;
+    line-height: 100%;
+    font-size: $size + px;
+    vertical-align: middle;
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
