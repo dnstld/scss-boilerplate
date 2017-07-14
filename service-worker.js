@@ -20,8 +20,8 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys()
-      .then(function(keyList) {
-        return Promise.all(keyList.map(function(key) {
+      .then(function(cacheNames) {
+        return Promise.all(cacheNames.map(function(key) {
           if (key !== CACHENAME) return caches.delete(key)
         }))
       })
@@ -30,10 +30,14 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        return response || fetch(event.request)
-      })
-  );
+  var url = new URL(event.request.url);
+
+  if (url.origin == location.origin && url.pathname == '/') {
+    event.respondWith(
+      caches.match(event.request)
+        .then(function(response) {
+          return response || fetch(event.request)
+        })
+    );
+  }
 });
